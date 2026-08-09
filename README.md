@@ -143,6 +143,6 @@ pytest tests/
 
 [MIT License](LICENSE)
 
-ConTributers:
-Hasher Amin
-Muhammad Aadil C.(Founder & Solo Builder @genvimart)
+Contributor's:
+**Hasher Amin**  
+**Muhammad Aadil C.(Founder & Solo Builder @genvimart)**

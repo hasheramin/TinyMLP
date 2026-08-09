@@ -10,7 +10,6 @@ from tinymlp.activations.sigmoid import sigmoid
 from tinymlp.activations.tanh import tanh
 
 
-
 def test_relu():
     assert relu(-2.0) == 0.0
     assert relu(3.5) == 3.5
@@ -35,6 +34,10 @@ def test_sigmoid():
     assert abs(out.data - 0.5) < 1e-6
     assert abs(v.grad - 0.25) < 1e-6
 
+    # Test numerical stability with extreme scalar inputs
+    assert sigmoid(1000.0) == 1.0
+    assert sigmoid(-1000.0) == 0.0
+
 
 def test_tanh():
     v = Value(0.0)
@@ -42,3 +45,5 @@ def test_tanh():
     out.backward()
     assert abs(out.data - 0.0) < 1e-6
     assert abs(v.grad - 1.0) < 1e-6
+
+    assert abs(tanh(0.0) - 0.0) < 1e-6

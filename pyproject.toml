@@ -11,18 +11,47 @@ authors = [
     { name = "TinyMLP Contributors" }
 ]
 license = { text = "MIT" }
+
+
+keywords = [
+    "autograd",
+    "automatic-differentiation",
+    "deep-learning",
+    "neural-network",
+    "machine-learning",
+    "mlp",
+    "education",
+    "python",
+]
 classifiers = [
-    "Programming Language :: Python :: 3",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 requires-python = ">=3.8"
 dependencies = []
 
+[project.urls]
+Homepage = "https://github.com/tinymlp/tinymlp"
+Repository = "https://github.com/tinymlp/tinymlp"
+Documentation = "https://github.com/tinymlp/tinymlp#readme"
+"Bug Tracker" = "https://github.com/tinymlp/tinymlp/issues"
+
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0.0",
+    "build",
 ]
 
 [tool.setuptools.packages.find]

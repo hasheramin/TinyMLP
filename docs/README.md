@@ -20,9 +20,17 @@ The core data structures and workflows are organized as follows:
 [MLP]    ---> Chain of Layers
 ```
 
+## Quick Import
+
+All public components can be imported directly from `tinymlp`:
+```python
+from tinymlp import Value, MLP, Layer, Neuron, SGD, mse_loss, binary_cross_entropy, relu, sigmoid, tanh
+```
+
 ---
 
 ## Core Module (`tinymlp.core`)
+
 
 ### `Value(data, _children=(), _op="", label="")`
 

@@ -1,10 +1,8 @@
-from tinymlp.core.value import Value
-
-
-def topological_sort(root: Value):
+def topological_sort(root):
     """
     Returns a topologically sorted list of nodes from the computational graph rooted at `root`.
     """
+
     topo = []
     visited = set()
 
@@ -19,11 +17,12 @@ def topological_sort(root: Value):
     return topo
 
 
-def trace(root: Value):
+def trace(root):
     """
     Traces all nodes and edges in the computational graph ending at `root`.
     Returns (nodes, edges).
     """
+
     nodes, edges = set(), set()
 
     def build(v):

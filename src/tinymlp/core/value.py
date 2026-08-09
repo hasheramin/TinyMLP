@@ -1,4 +1,5 @@
 import math
+from tinymlp.core.engine import topological_sort
 
 
 class Value:
@@ -105,7 +106,11 @@ class Value:
 
     def sigmoid(self):
         x = self.data
-        s = 1.0 / (1.0 + math.exp(-x))
+        if x >= 0:
+            s = 1.0 / (1.0 + math.exp(-x))
+        else:
+            z = math.exp(x)
+            s = z / (1.0 + z)
         out = Value(s, (self,), "sigmoid")
 
         def _backward():
@@ -129,19 +134,10 @@ class Value:
         """
         Computes gradients for all nodes in the computational graph via reverse-mode AD.
         """
-        topo = []
-        visited = set()
-
-        def build_topo(v):
-            if v not in visited:
-                visited.add(v)
-                for child in v._prev:
-                    build_topo(child)
-                topo.append(v)
-
-        build_topo(self)
+        topo = topological_sort(self)
 
         # go one node at a time and apply chain rule to calculate gradients
         self.grad = 1.0
         for node in reversed(topo):
             node._backward()
+

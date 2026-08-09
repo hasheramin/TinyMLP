@@ -9,4 +9,8 @@ def sigmoid(x):
     if isinstance(x, Value):
         return x.sigmoid()
     val = float(x)
-    return 1.0 / (1.0 + math.exp(-val))
+    if val >= 0:
+        return 1.0 / (1.0 + math.exp(-val))
+    z = math.exp(val)
+    return z / (1.0 + z)
+

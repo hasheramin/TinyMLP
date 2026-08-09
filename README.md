@@ -83,7 +83,7 @@ pip install -e .
 ### 2. Autograd Example
 
 ```python
-from tinymlp.core.value import Value
+from tinymlp import Value
 
 a = Value(2.0, label='a')
 b = Value(-3.0, label='b')
@@ -104,9 +104,8 @@ print(f"b.grad: {b.grad}") # -4.0
 ### 3. Training an MLP on XOR
 
 ```python
-from tinymlp.nn.mlp import MLP
-from tinymlp.losses.mse import mse_loss
-from tinymlp.optim.sgd import SGD
+from tinymlp import MLP, SGD, mse_loss
+
 
 # 2 inputs -> hidden layer of 4 -> 1 output
 model = MLP(2, [4, 1], activations=['relu', 'sigmoid'])

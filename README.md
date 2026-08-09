@@ -1,6 +1,12 @@
-# TinyMLP
+<p align="center">
+  <img src="assets/tinymlp-logo.png" alt="TinyMLP Logo" width="120">
+</p>
 
-**TinyMLP** is a lightweight, pure Python scalar automatic differentiation (autograd) engine and neural network library built for education, experimentation, and deep learning fundamentals.
+<h1 align="center"><b>TinyMLP</b></h1>
+
+<p align="center">
+  A lightweight, pure Python scalar automatic differentiation (autograd) engine and neural network library built for education, experimentation, and deep learning fundamentals.
+</p>
 
 ---
 
@@ -17,13 +23,16 @@
 
 ## Directory Structure
 
-```
+```text
 TinyMLP/
 │
 ├── README.md
 ├── LICENSE
 ├── pyproject.toml
 ├── .gitignore
+│
+├── assets/
+│   └── tinymlp-logo.png
 │
 ├── src/
 │   └── tinymlp/
@@ -75,7 +84,14 @@ TinyMLP/
 
 ### 1. Installation
 
-Install in editable mode:
+Install TinyMLP directly from PyPI:
+
+```bash
+pip install tinymlp
+```
+
+For local development, you can install the package in editable mode:
+
 ```bash
 pip install -e .
 ```
@@ -85,20 +101,20 @@ pip install -e .
 ```python
 from tinymlp import Value
 
-a = Value(2.0, label='a')
-b = Value(-3.0, label='b')
-c = Value(10.0, label='c')
+a = Value(2.0, label="a")
+b = Value(-3.0, label="b")
+c = Value(10.0, label="c")
 
 e = a * b
 d = e + c
-f = Value(-2.0, label='f')
+f = Value(-2.0, label="f")
 L = d * f
 
 L.backward()
 
-print(f"L.data: {L.data}") # -8.0
-print(f"a.grad: {a.grad}") # 6.0
-print(f"b.grad: {b.grad}") # -4.0
+print(f"L.data: {L.data}")  # -8.0
+print(f"a.grad: {a.grad}")  # 6.0
+print(f"b.grad: {b.grad}")  # -4.0
 ```
 
 ### 3. Training an MLP on XOR
@@ -106,9 +122,8 @@ print(f"b.grad: {b.grad}") # -4.0
 ```python
 from tinymlp import MLP, SGD, mse_loss
 
-
 # 2 inputs -> hidden layer of 4 -> 1 output
-model = MLP(2, [4, 1], activations=['relu', 'sigmoid'])
+model = MLP(2, [4, 1], activations=["relu", "sigmoid"])
 optimizer = SGD(model.parameters(), lr=0.5)
 
 X = [[0.0, 0.0], [0.0, 1.0], [1.0, 0.0], [1.0, 1.0]]
@@ -117,11 +132,11 @@ y = [0.0, 1.0, 1.0, 0.0]
 for epoch in range(100):
     y_pred = [model(x) for x in X]
     loss = mse_loss(y_pred, y)
-    
+
     optimizer.zero_grad()
     loss.backward()
     optimizer.step()
-    
+
     if epoch % 20 == 0:
         print(f"Epoch {epoch} | Loss: {loss.data:.4f}")
 ```
@@ -133,8 +148,14 @@ for epoch in range(100):
 Run all unit tests with pytest:
 
 ```bash
-pytest tests/
+python -m pytest tests/
 ```
+
+---
+
+## Documentation
+
+For more details about TinyMLP's architecture and internal components, see the [documentation](docs/README.md).
 
 ---
 
@@ -142,6 +163,9 @@ pytest tests/
 
 [MIT License](LICENSE)
 
-Contributor's:
+---
+
+## Contributors
+
 **Hasher Amin**  
-**Muhammad Aadil C.(Founder & Solo Builder @genvimart)**
+**Muhammad Aadil C.** - Founder and Solo Builder @GenViMart

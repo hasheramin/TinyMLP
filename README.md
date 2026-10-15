@@ -162,10 +162,3 @@ For more details about TinyMLP's architecture and internal components, see the [
 ## License
 
 [MIT License](LICENSE)
-
----
-
-## Contributors
-
-**Hasher Amin**  
-**Muhammad Aadil C.** - Founder and Solo Builder @GenViMart
